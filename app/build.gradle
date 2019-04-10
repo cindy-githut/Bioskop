@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        applicationId "com.cindymb.bioskop"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField('String', 'TMDB_API_KEY', '"bf941c6380402d9ac726e0bc4fbe0cac"')
+        buildConfigField('String', 'TMDB_ACCESS_TOKEN', '"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZjk0MWM2MzgwNDAyZDlhYzcyNmUwYmM0ZmJlMGNhYyIsInN1YiI6IjVjYWI1ZDg1YzNhMzY4M2Y0YTYzZjRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bnvPygdG51a6QRU26CuA5k307nPLdmsoFCuvCQbFd0A"')
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    def navigation_version = "1.0.0"
+    def crashlytics_version = "2.9.6"
+    def stetho_version = "1.5.0"
+    def easy_version = "1.1.3"
+    def gson_version = '2.8.5'
+    def retrofit_version = "2.4.0"
+    def lifecycle_version = "1.1.1"
+    def dagger2_version = "2.19"
+    def okhttp3_version = "3.9.1"
+
+    //navigation components
+    implementation "android.arch.navigation:navigation-fragment:$navigation_version"
+    implementation "android.arch.navigation:navigation-ui:$navigation_version"
+
+    // Crashlytics
+    implementation("com.crashlytics.sdk.android:crashlytics:$crashlytics_version@aar") {
+        transitive = true
+    }
+    //Stetho debug bridge
+    implementation "com.facebook.stetho:stetho:$stetho_version"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
+
+    // Easy Permissions
+    implementation "pub.devrel:easypermissions:$easy_version"
+
+    // Gson
+    implementation "com.google.code.gson:gson:$gson_version"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Ok http 3
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
+
+    // Android Architecture Component - LiveData & ViewModel
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
+    // Dagger libraries
+    implementation "com.google.dagger:dagger:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger2_version"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
