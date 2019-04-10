@@ -10,8 +10,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         buildConfigField('String', 'TMDB_API_KEY', '"bf941c6380402d9ac726e0bc4fbe0cac"')
         buildConfigField('String', 'TMDB_ACCESS_TOKEN', '"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZjk0MWM2MzgwNDAyZDlhYzcyNmUwYmM0ZmJlMGNhYyIsInN1YiI6IjVjYWI1ZDg1YzNhMzY4M2Y0YTYzZjRjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bnvPygdG51a6QRU26CuA5k307nPLdmsoFCuvCQbFd0A"')
+        buildConfigField('String', 'BASE_URL', '"http://api.themoviedb.org/3/movie/"')
 
     }
     buildTypes {
@@ -33,10 +35,14 @@ dependencies {
     def lifecycle_version = "1.1.1"
     def dagger2_version = "2.19"
     def okhttp3_version = "3.9.1"
+    def timber_version = "4.7.1"
 
     //navigation components
     implementation "android.arch.navigation:navigation-fragment:$navigation_version"
     implementation "android.arch.navigation:navigation-ui:$navigation_version"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
     // Crashlytics
     implementation("com.crashlytics.sdk.android:crashlytics:$crashlytics_version@aar") {
@@ -64,6 +70,7 @@ dependencies {
 
     // Dagger libraries
     implementation "com.google.dagger:dagger:$dagger2_version"
+    implementation 'com.android.support:support-v4:28.0.0'
     annotationProcessor "com.google.dagger:dagger-compiler:$dagger2_version"
     implementation "com.google.dagger:dagger-android-support:$dagger2_version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$dagger2_version"
